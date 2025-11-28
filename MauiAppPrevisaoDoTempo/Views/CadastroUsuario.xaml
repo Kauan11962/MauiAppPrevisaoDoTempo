@@ -2,11 +2,24 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppPrevisaoDoTempo.Views.CadastroUsuario"
-             Title="CadastroUsuario">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="Cadastro de Usuário">
+    <VerticalStackLayout Spacing="10" Padding="30">
+
+        <Label Text="Nome" />
+        <Entry x:Name="txtNome" Placeholder="Digite seu nome completo" />
+
+        <Label Text="Data de Nascimento" />
+        <DatePicker x:Name="dtpDataNascimento" Format="dd/MM/yyyy" />
+
+        <Label Text="E-mail" />
+        <Entry x:Name="txtEmail" Placeholder="seu.email@exemplo.com" Keyboard="Email" />
+
+        <Label Text="Senha" />
+        <Entry x:Name="txtSenha" Placeholder="Mínimo 4 caracteres" IsPassword="True" />
+
+        <Button Text="Cadastrar" Clicked="OnCadastrarClicked" Margin="0,20,0,0" />
+
+        <Label x:Name="lblMensagem" TextColor="Red" HorizontalTextAlignment="Center" Margin="0,10,0,0"/>
+
     </VerticalStackLayout>
 </ContentPage>
