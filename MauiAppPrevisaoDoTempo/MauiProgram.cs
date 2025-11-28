@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using MauiAppPrevisaoDoTempo; 
+using MauiAppPrevisaoDoTempo.Helpers;
+using Microsoft.Maui.Storage;
+using System.IO; 
 
 namespace MauiAppPrevisaoDoTempo
 {
@@ -15,9 +18,11 @@ namespace MauiAppPrevisaoDoTempo
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
+            builder.Services.AddSingleton<SQLiteDatabaseHelpers>(s =>
+            {
+                var dbPath = Path.Combine(FileSystem.AppDataDirectory, "PrevisaoTempo.db3");
+                return new SQLiteDatabaseHelpers(dbPath);
+            });
 
             return builder.Build();
         }
